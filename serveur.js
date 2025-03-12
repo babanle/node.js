@@ -12,8 +12,7 @@ let tasks = [
     { id: 4, description: "Preparer à deux" }
 ];
 
-let idCounter = tasks.length + 1; // ✅ Correction ici
-
+let idCounter = tasks.length + 1; 
 // Lire toutes les descriptions des tâches
 app.get("/tasks", (req, res) => {
     res.json(tasks);
@@ -29,9 +28,9 @@ app.get("/tasks/:id", (req, res) => {
 // Ajouter une nouvelle tâche (description uniquement)
 app.post("/tasks", (req, res) => {
     const { description } = req.body;
-    if (!description) return res.status(400).json({ message: "La description est obligatoire" });
+   /* if (!description) return res.status(400).json({ message: "La description est obligatoire" });*/
 
-    const newTask = { id: idCounter++, description };
+    const newTask = { id:tasks.length + 1, description };
     tasks.push(newTask);
     res.status(201).json(newTask);
 });
